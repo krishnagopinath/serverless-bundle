@@ -6,7 +6,7 @@ module.exports = {
   options: {
     aliases: [],
     stats: false,
-    generateStatsFile: false,
+    generateStatsFiles: false,
     caching: true,
     linting: true,
     esbuild: false,

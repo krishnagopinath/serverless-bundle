@@ -5,7 +5,7 @@ plugins:
 
 custom:
   bundle:
-    generateStatsFile: true
+    generateStatsFiles: true
 
 provider:
   name: aws

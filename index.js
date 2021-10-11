@@ -35,6 +35,7 @@ function applyWebpackOptions(custom, config) {
       ),
     },
     excludeFiles: config.options.excludeFiles,
+    keepOutputDirectory: config.options.generateStatsFiles,
   };
 }
 

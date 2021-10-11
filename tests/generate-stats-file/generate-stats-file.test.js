@@ -10,17 +10,25 @@ afterAll(async () => {
   await clearNpmCache(__dirname);
 });
 
-test("generate-stats-file", async () => {
+test("generate-stats-files", async () => {
   const result = await runSlsCommand(__dirname);
   const statsFilePath = path.join(
     __dirname,
     ".webpack",
     "service",
-    "stats.json"
+    "bundle_stats.json"
+  );
+
+  const htmlStatsFilePath = path.join(
+    __dirname,
+    ".webpack",
+    "service",
+    "bundle_stats.html"
   );
 
   expect(result).not.toMatch(errorRegex);
 
   // Check if `stats.json` file was generated
   expect(existsSync(statsFilePath)).toBe(true);
+  expect(existsSync(htmlStatsFilePath)).toBe(true);
 });

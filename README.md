@@ -107,7 +107,7 @@ custom:
     stats: false                    # Don't print out any Webpack output
     linting: true                   # Enable linting as a part of the build process
     esbuild: false                  # Use esbuild-loader instead of babel or ts for faster builds
-    generateStatsFile: false        # Creates a stats file that could be fed into bundle analyzing tools, more below
+    generateStatsFiles: false        # Creates stats files that could be used for bundle analyzing, more below
     disableForkTsChecker: false     # Disable the ForkTsChecker plugin, more below
     tsConfig: "tsconfig.json"       # Path to your 'tsconfig.json', if it's not in the root
     forceInclude:                   # Optional list of NPM packages that need to be included
@@ -443,9 +443,12 @@ The three options (`externals`, `forceExclude`, and `excludeFiles`) look similar
 
   These are a glob of files that can be excluded from the function resolution. This happens when you have multiple files that are in the same directory and Serverless Framework tries to use them as a function handler. For example, if you have a `index.js` and a `index.test.js` and your function is pointing to `index`, you'll get a warning saying, `WARNING: More than one matching handlers found for index. Using index.js`. To fix this, use `excludeFiles: **/*.test.js`.
 
-### Generating a stats file
+### Generating stats files
 
-Use the `generateStatsFile` option if you want to analyze your bundle size. This option, if set to `true`, will enable generation of a `stats.json` in the output directory, using the [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) plugin.
+Use the `generateStatsFiles` option if you want to analyze your bundle size.
+This option, if set to `true`, will enable the generation of a `bundle_stats.json` and a `bundle_stats.html` in the
+output directory, using the [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
+plugin.
 
 This file can then be fed into tools like [webpack-visualizer](http://chrisbateman.github.io/webpack-visualizer/), which could give us insights on which packages take up our bundle size. The webpack-bundle-analyzer plugin could also be used to analyze the `stats.json` that is generated, [see here](https://github.com/webpack-contrib/webpack-bundle-analyzer#usage-as-a-cli-utility).
 

@@ -43,7 +43,7 @@ const tsConfigPath = path.resolve(servicePath, config.options.tsConfig);
 
 const ENABLE_ESBUILD = config.options.esbuild;
 const ENABLE_STATS = config.options.stats;
-const GENERATE_STATS_FILE = config.options.generateStatsFile;
+const GENERATE_STATS_FILES = config.options.generateStatsFiles;
 const ENABLE_LINTING = config.options.linting;
 const ENABLE_SOURCE_MAPS = config.options.sourcemaps;
 const ENABLE_TYPESCRIPT = fs.existsSync(tsConfigPath);
@@ -274,11 +274,14 @@ function loaders() {
 function plugins() {
   const plugins = [];
 
-  if (GENERATE_STATS_FILE) {
+  if (GENERATE_STATS_FILES) {
     plugins.push(
       new BundleAnalyzerPlugin({
-        analyzerMode: "disabled",
-        generateStatsFile: true
+        analyzerMode: "static",
+        reportFilename: "bundle_stats.html",
+        openAnalyzer: false,
+        statsFilename: "bundle_stats.json",
+        generateStatsFile: true,
       })
     );
   }
