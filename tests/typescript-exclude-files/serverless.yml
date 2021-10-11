@@ -3,12 +3,14 @@ service: my-service
 plugins:
   - '../../index'
 
+custom:
+  bundle:
+    excludeFiles: '*.spec.ts'
+
 provider:
   name: aws
   runtime: nodejs10.x
 
 functions:
-  default:
-    handler: handler.hello
   hello:
-    handler: _warmup/index.hello
+    handler: handler.hello

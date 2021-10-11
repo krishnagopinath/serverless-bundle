@@ -1,5 +1,6 @@
 import { hi } from "@my-org/some-lib/index";
 import { merhaba } from "./tsx/import";
+import { Greeter, Rocket } from './decorated-class'
 
 /* eslint-disable no-unused-vars */
 export const typescript4Inject = <A extends []>(
@@ -8,6 +9,9 @@ export const typescript4Inject = <A extends []>(
 /* eslint-enable no-unused-vars */
 
 export const hello = async (event: any) => {
+  new Greeter("world");
+  new Rocket().launch();
+
   return {
     statusCode: 200,
     body: JSON.stringify({

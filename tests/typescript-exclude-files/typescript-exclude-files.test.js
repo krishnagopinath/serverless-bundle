@@ -8,8 +8,11 @@ afterAll(async () => {
   await clearNpmCache(__dirname);
 });
 
-test("ignore warmup plugin", async () => {
-  const result = await runSlsCommand(__dirname, "package");
+test("typescript-exclude-files", async () => {
+  const result = await runSlsCommand(__dirname);
 
+  expect(result).not.toMatch(
+    "WARNING: More than one matching handlers found for 'handler'. Using 'handler.ts'."
+  );
   expect(result).not.toMatch(errorRegex);
 });
